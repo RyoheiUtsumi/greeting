@@ -16,3 +16,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/comments/morning', function () {
+    return view('comments.morning');
+});
+
+Route::get('/comments/afternoon', function () {
+    return view('comments.afternoon');
+});
+
+Route::get('/comments/evening', function () {
+    return view('comments.evening');
+});
+
+Route::get('/comments/night', function () {
+    return view('comments.night');
+});
+
+Route::get('/comments/freeword/{msg}', function ($msg) {
+    return view('comments.freeword', ['msg' => $msg]);
+});
+
+Route::get('/comments/random/', function () {
+
+    $messages = ['おはよう', 'こんにちは', 'こんばんは', 'おやすみ'];
+
+    $randomMessage = $messages[array_rand($messages)];
+
+    return view('comments.random', ['message' => $randomMessage]);
+});
